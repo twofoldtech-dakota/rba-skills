@@ -1,10 +1,7 @@
 ---
 title: Generate Content Author Guide
 description: Pointer to the content author guide skill in Build > Design Systems
-sidebar:
-  badge:
-    text: "See: Build"
-    variant: note
+sidebar: {}
 ---
 
 This skill lives under **Build > Design Systems** because it's authored alongside design system documentation.

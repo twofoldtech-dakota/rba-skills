@@ -236,11 +236,20 @@ header.header {
 	border-top: 1px solid var(--sl-color-gray-5);
 }
 
-/* Tech badge accent on Browse by Platform */
-.sidebar-content .top-level > li:has(.sl-badge.note) {
+/* Sidebar left-border accents:
+   - Sections with a badge: always visible
+   - Sections without a badge: visible only when expanded */
+.sidebar-content .top-level > li:has(.sl-badge) {
 	border-left: 2px solid var(--rba-cat-tech);
 	padding-left: 0.75rem;
 	margin-left: -0.75rem;
+}
+
+.sidebar-content .top-level > li:not(:has(.sl-badge)):has(> details[open]) {
+	border-left: 2px solid var(--sl-color-accent);
+	padding-left: 0.75rem;
+	margin-left: -0.75rem;
+	transition: border-color var(--rba-duration) var(--rba-ease);
 }
 
 /* ============================================================
