@@ -4,6 +4,7 @@ import starlight from '@astrojs/starlight';
 
 // https://astro.build/config
 export default defineConfig({
+	site: 'https://rba-skills.vercel.app',
 	integrations: [
 		starlight({
 			title: 'SKILLS',
@@ -26,12 +27,37 @@ export default defineConfig({
 					href: 'https://github.com/rbaconsulting',
 				},
 			],
+			head: [
+				{
+					tag: 'meta',
+					attrs: {
+						property: 'og:image',
+						content: 'https://rba-skills.vercel.app/og-default.png',
+					},
+				},
+				{
+					tag: 'meta',
+					attrs: { property: 'og:image:width', content: '1200' },
+				},
+				{
+					tag: 'meta',
+					attrs: { property: 'og:image:height', content: '630' },
+				},
+				{
+					tag: 'meta',
+					attrs: {
+						name: 'twitter:image',
+						content: 'https://rba-skills.vercel.app/og-default.png',
+					},
+				},
+			],
 			lastUpdated: true,
 			editLink: {
 				baseUrl: 'https://github.com/twofoldtech-dakota/rba-skills/edit/main/',
 			},
 			components: {
 				Head: './src/components/starlight/Head.astro',
+				PageTitle: './src/components/starlight/PageTitle.astro',
 			},
 			customCss: [
 				'@fontsource/montserrat/400.css',

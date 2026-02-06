@@ -67,3 +67,4 @@ Good skills share these traits:
 - [How to Use Skills](/getting-started/how-to-use-skills/) — Step-by-step instructions for every AI platform
 - [The RBA Way](/getting-started/the-rba-way/) — How these skills connect to RBA's delivery methodology
 - [Browse by Role](/) — Jump to your discipline
+- [Claude Skills on GitHub](https://github.com/anthropics/claude-plugins-official) — Official Claude skills repository from Anthropic

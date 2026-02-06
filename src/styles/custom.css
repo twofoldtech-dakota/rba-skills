@@ -897,3 +897,76 @@ starlight-toc a:hover {
 		padding-top: 0;
 	}
 }
+
+/* ============================================================
+   22. SHARE BAR — Page-level social sharing
+   ============================================================ */
+
+.share-bar {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.375rem;
+	margin-top: 0.75rem;
+	margin-bottom: 0.25rem;
+}
+
+.share-btn {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.35rem;
+	padding: 0.3rem 0.65rem;
+	font-family: var(--sl-font);
+	font-size: var(--sl-text-xs);
+	font-weight: 500;
+	line-height: 1;
+	color: var(--sl-color-gray-2);
+	background: transparent;
+	border: 1px solid var(--sl-color-gray-5);
+	border-radius: var(--rba-radius-pill);
+	cursor: pointer;
+	text-decoration: none;
+	white-space: nowrap;
+	transition:
+		color var(--rba-duration) var(--rba-ease),
+		border-color var(--rba-duration) var(--rba-ease),
+		background-color var(--rba-duration) var(--rba-ease);
+}
+
+.share-btn:hover {
+	color: var(--sl-color-accent);
+	border-color: color-mix(in srgb, var(--sl-color-accent) 50%, var(--sl-color-gray-5));
+	background: var(--sl-color-accent-low);
+}
+
+.share-btn:active {
+	transform: scale(0.97);
+}
+
+.share-btn--copied {
+	color: var(--sl-color-accent) !important;
+	border-color: var(--sl-color-accent) !important;
+}
+
+.share-btn svg {
+	flex-shrink: 0;
+}
+
+/* Hide native share on desktop — script also hides it, belt and suspenders */
+.share-btn--native {
+	display: none;
+}
+
+@media (pointer: coarse) {
+	.share-btn--native {
+		display: inline-flex;
+	}
+}
+
+/* Light mode adjustments */
+:root[data-theme='light'] .share-btn {
+	color: var(--sl-color-gray-3);
+}
+
+:root[data-theme='light'] .share-btn:hover {
+	color: var(--sl-color-accent);
+}
