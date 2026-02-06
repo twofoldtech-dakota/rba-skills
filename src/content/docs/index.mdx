@@ -1,0 +1,60 @@
+---
+title: RBA Collective Intelligence
+description: The unified AI skill framework for RBA Strategy, Design, and Engineering
+template: splash
+hero:
+  tagline: The unified AI skill framework for RBA Strategy, Design, and Engineering
+  image:
+    dark: ../../assets/houston.webp
+    light: ../../assets/houston.webp
+  actions:
+    - text: Get Started
+      link: /getting-started/overview/
+      icon: right-arrow
+      variant: primary
+    - text: Browse by Role
+      link: '#browse-by-role'
+      icon: seti:folder
+      variant: minimal
+---
+
+import { Card, CardGrid, LinkCard } from '@astrojs/starlight/components';
+
+## Browse by Role
+
+Find skills tailored to your discipline within RBA's three pillars.
+
+<CardGrid>
+  <LinkCard title="Strategy" description="Project management, business analysis, digital strategy, content strategy, and SEO/GEO" href="/roles/strategy/" />
+  <LinkCard title="Design" description="UX design, UI design, and accessibility — WCAG compliance and inclusive patterns" href="/roles/design/" />
+  <LinkCard title="Engineering" description="Architecture, front-end, back-end, full-stack, DevOps, testing, and database" href="/roles/engineering/" />
+  <LinkCard title="Security & Oversight" description="Security reviews, compliance checks, and performance audits" href="/roles/security-oversight/" />
+</CardGrid>
+
+## Browse by Technology
+
+Find skills for the platforms RBA delivers on every day.
+
+<CardGrid>
+  <LinkCard title="Sitecore" description="XM Cloud, XP, Headless/JSS, Search, and Commerce — Platinum Partner" href="/technologies/sitecore/" />
+  <LinkCard title="Umbraco" description="v13+, legacy v7/v8, and Heartcore — Gold Partner" href="/technologies/umbraco/" />
+  <LinkCard title="Optimizely" description="CMS, Episerver legacy, CMP, and Commerce — Partner" href="/technologies/optimizely/" />
+  <LinkCard title="Microsoft Azure" description="Cloud infrastructure, DevOps, and AI services" href="/technologies/azure/" />
+</CardGrid>
+
+## What Are RBA Skills?
+
+<CardGrid stagger>
+  <Card title="Built on Strategy, Design & Engineering" icon="rocket">
+    Every skill is rooted in RBA's three-pillar methodology — the same framework behind 1,500+ successful client engagements across 25+ industries since 2006.
+  </Card>
+  <Card title="Works in ChatGPT, Claude, Gemini & More" icon="laptop">
+    Each skill includes a copyable prompt template that works in any AI platform. No special tools required — just paste and go.
+  </Card>
+  <Card title="Power User? Install as Claude Code Skills" icon="setting">
+    Developers using Claude Code can install skills as SKILL.md files for CLI-integrated workflows with `/skill-name` invocation.
+  </Card>
+  <Card title="Battle-Tested on 1,500+ Engagements" icon="approve-check">
+    These aren't generic prompts. They encode patterns from real Sitecore, Umbraco, Optimizely, and Azure projects delivered by RBA's team.
+  </Card>
+</CardGrid>

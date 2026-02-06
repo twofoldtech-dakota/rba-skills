@@ -1,0 +1,131 @@
+---
+title: How to Use Skills
+description: Step-by-step guide to using RBA skills in ChatGPT, Claude, Gemini, and Claude Code
+---
+
+import { Tabs, TabItem, Aside } from '@astrojs/starlight/components';
+
+Every skill in the Intelligence Hub is a **prompt** — a set of instructions you give to an AI assistant to produce a specific outcome. Think of it like a recipe: the skill provides the steps and structure, you provide the ingredients (your project details).
+
+## What's on a Skill Page?
+
+Every skill page has the same sections:
+
+1. **Context & Goal** — What problem this skill solves and when to use it
+2. **The Prompt** — The text you copy and paste into your AI assistant
+3. **Variables** — The blanks you fill in (like `{{CLIENT_NAME}}`) with your specifics
+4. **Install as Claude Code Skill** — For CLI power users (optional, collapsible)
+5. **Best Practices** — Tips for getting the best results
+
+## Step-by-Step: Using a Skill
+
+### 1. Find a Skill
+
+Browse by your [role](/) (Strategy, Design, Engineering, Security) or by [technology](/) (Sitecore, Umbraco, Optimizely, Azure). Or use the search bar at the top of any page.
+
+### 2. Read the Context
+
+Check the "Context & Goal" section to make sure this skill fits your situation.
+
+### 3. Copy the Prompt
+
+Click the copy button on the prompt code block. The prompt will be copied to your clipboard.
+
+### 4. Fill in the Variables
+
+Replace every `{{VARIABLE}}` in the prompt with your specific details. For example:
+
+- `{{CLIENT_NAME}}` → `Contoso Corporation`
+- `{{TECH_STACK}}` → `Sitecore XM Cloud, Next.js 14, Azure`
+- `{{TIMELINE}}` → `16 weeks, Q3 launch`
+
+<Aside type="tip">
+The more specific your variables, the better the output. "Redesign the website" produces generic results. "Migrate 450 pages from Sitecore XP 10.3 to XM Cloud with headless Next.js front-end" produces actionable results.
+</Aside>
+
+### 5. Paste into Your AI Platform
+
+<Tabs>
+  <TabItem label="ChatGPT">
+    1. Open [chat.openai.com](https://chat.openai.com)
+    2. Start a new conversation
+    3. Paste the prompt with your filled-in variables
+    4. Press Enter and wait for the response
+    5. Review the output — if it needs adjustment, ask: "Make the tone more formal" or "Add more detail to the risks section"
+
+    **Best model:** GPT-4o for most skills. GPT-4 for complex analysis.
+  </TabItem>
+  <TabItem label="Claude (Web)">
+    1. Open [claude.ai](https://claude.ai)
+    2. Start a new conversation
+    3. Paste the prompt with your filled-in variables
+    4. Press Enter and wait for the response
+    5. Review and iterate — Claude excels at follow-up refinements
+
+    **Best model:** Sonnet 4 for routine tasks. Opus 4 for complex analysis requiring deep reasoning.
+  </TabItem>
+  <TabItem label="Gemini">
+    1. Open [gemini.google.com](https://gemini.google.com)
+    2. Start a new conversation
+    3. Paste the prompt with your filled-in variables
+    4. Press Enter and wait for the response
+    5. Review and refine as needed
+
+    **Best model:** Gemini 2.5 Pro for most skills.
+  </TabItem>
+  <TabItem label="Claude Code (CLI)">
+    Claude Code is Anthropic's command-line tool for developers. Instead of copy-pasting prompts, you install skills as files and invoke them with slash commands.
+
+    **Install a skill:**
+    1. Open the skill page and expand "Install as Claude Code Skill"
+    2. Copy the SKILL.md content
+    3. Save it to `~/.claude/skills/[skill-name]/SKILL.md` (global) or `.claude/skills/[skill-name]/SKILL.md` (project)
+
+    **Use a skill:**
+    ```bash
+    # In your terminal, inside a project directory:
+    claude
+
+    # Then invoke the skill:
+    /research Sitecore XM Cloud vs Umbraco Heartcore for headless delivery
+    /scaffold-sitecore-jss-component HeroBanner
+    ```
+
+    **Why use Claude Code?** Skills in Claude Code can read your codebase, search files, and access the web — producing much more contextual results than a copy-paste prompt.
+  </TabItem>
+</Tabs>
+
+### 6. Review and Iterate
+
+The first output is a draft, not a final product. Common follow-up requests:
+
+- "Make the tone more [formal / conversational / technical]"
+- "Add more detail to section 3"
+- "Shorten this to fit on one page"
+- "Add a comparison table for the two options"
+- "What am I missing? What questions should I be asking?"
+
+## Which Platform Should I Use?
+
+| Platform | Best For | Access |
+|----------|----------|--------|
+| **ChatGPT** | Most accessible; good all-around | chat.openai.com |
+| **Claude (Web)** | Deep analysis, long documents, nuanced reasoning | claude.ai |
+| **Claude Code** | Developers who want codebase-aware skills | Terminal / CLI |
+| **Gemini** | Google Workspace integration, quick tasks | gemini.google.com |
+
+<Aside type="note">
+All skills work in all platforms. The prompts are platform-agnostic. Choose whichever AI you're most comfortable with.
+</Aside>
+
+## Tips for Better Results
+
+1. **Be specific with variables.** "Healthcare client" → "Regional healthcare system with 12 hospitals, 50+ clinics, and a patient portal serving 200K monthly users."
+
+2. **Provide context.** Paste in actual meeting notes, requirements, or code. The AI works better with real data than with your summary of the data.
+
+3. **Iterate, don't restart.** If the first output is 80% right, ask for refinements. Don't start a new conversation — the AI remembers context.
+
+4. **Combine skills.** Use "Research Any Topic" to gather context, then use a domain skill with that context. Use "Generate Project Brief" first, then reference it in "Generate Sprint Summary."
+
+5. **Save good outputs.** When a skill produces great results, save the output as a reference for next time. Your filled-in prompt is reusable too.

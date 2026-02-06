@@ -1,0 +1,21 @@
+/* RBA Brand: Teal #00b8d9, Red #c7242d, Montserrat font */
+:root {
+	--sl-font: 'Montserrat', sans-serif;
+	--sl-color-accent-low: #0a3d4a;
+	--sl-color-accent: #00b8d9;
+	--sl-color-accent-high: #b3ecf5;
+	--sl-color-white: #ffffff;
+	--sl-color-gray-1: #eceef2;
+	--sl-color-gray-2: #c0c2c7;
+	--sl-color-gray-3: #888b96;
+	--sl-color-gray-4: #545861;
+	--sl-color-gray-5: #353841;
+	--sl-color-gray-6: #24272f;
+	--sl-color-black: #17181c;
+}
+
+:root[data-theme='light'] {
+	--sl-color-accent-low: #e0f7fa;
+	--sl-color-accent: #00838f;
+	--sl-color-accent-high: #004d56;
+}
