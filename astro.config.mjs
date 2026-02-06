@@ -8,6 +8,7 @@ export default defineConfig({
 	integrations: [
 		starlight({
 			title: 'SKILLS',
+			favicon: '/favicon.svg',
 			logo: {
 				light: './src/assets/rba-logo-full-color.svg',
 				dark: './src/assets/rba-logo-white.svg',
