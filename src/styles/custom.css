@@ -1,21 +1,922 @@
-/* RBA Brand: Teal #00b8d9, Red #c7242d, Montserrat font */
+/*
+ * AI Enablement Framework — Brand Theme
+ *
+ * Design system:
+ *   Surfaces (dark):  base #12141a  →  surface #1a1d25  →  elevated #22252e
+ *   Surfaces (light): base #ffffff  →  surface #f5f6f8  →  elevated #fff + shadow
+ *   Accent:           teal #00b8d9 (dark) / #0091a0 (light)
+ *   Motion:           200ms ease-out, transform/opacity only
+ *
+ * Starlight inverts the color scale in light mode:
+ *   --sl-color-white → darkest text    --sl-color-black → lightest bg
+ */
+
+/* ============================================================
+   1. DESIGN TOKENS — Dark Mode
+   ============================================================ */
+
 :root {
-	--sl-font: 'Montserrat', sans-serif;
-	--sl-color-accent-low: #0a3d4a;
+	--sl-font: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	--sl-font-system-mono: 'SF Mono', 'Cascadia Code', 'Fira Code', monospace;
+
+	--sl-color-accent-low: #0a2f38;
 	--sl-color-accent: #00b8d9;
 	--sl-color-accent-high: #b3ecf5;
-	--sl-color-white: #ffffff;
-	--sl-color-gray-1: #eceef2;
-	--sl-color-gray-2: #c0c2c7;
-	--sl-color-gray-3: #888b96;
-	--sl-color-gray-4: #545861;
-	--sl-color-gray-5: #353841;
-	--sl-color-gray-6: #24272f;
-	--sl-color-black: #17181c;
+
+	--sl-color-white: #e8eaf0;
+	--sl-color-gray-1: #c8ccd6;
+	--sl-color-gray-2: #9498a6;
+	--sl-color-gray-3: #6b7085;
+	--sl-color-gray-4: #4a4f5e;
+	--sl-color-gray-5: #2d3140;
+	--sl-color-gray-6: #12141a;
+	--sl-color-black: #12141a;
+
+	/* Brand tokens */
+	--rba-teal: #00b8d9;
+	--rba-teal-hover: #00d4f5;
+	--rba-teal-deep: #0091a0;
+	--rba-red: #c7242d;
+	--rba-cat-role: #00b8d9;
+	--rba-cat-tech: #7c6ef5;
+	--rba-cat-shared: #34c759;
+	--rba-radius: 8px;
+	--rba-radius-lg: 12px;
+	--rba-radius-pill: 999rem;
+	--rba-ease: cubic-bezier(0.4, 0, 0.2, 1);
+	--rba-duration: 0.2s;
+
+	/* Heading scale */
+	--sl-text-h1: 2.25rem;
+	--sl-text-h2: 1.75rem;
+	--sl-text-h3: 1.35rem;
+	--sl-text-h4: 1.125rem;
+}
+
+/* ============================================================
+   2. DESIGN TOKENS — Light Mode (inverted scale)
+   ============================================================ */
+
+:root[data-theme='light'] {
+	--sl-color-accent-low: #e8f7f9;
+	--sl-color-accent: #0091a0;
+	--sl-color-accent-high: #004d56;
+
+	--sl-color-white: #1a1d25;
+	--sl-color-gray-1: #2a2d38;
+	--sl-color-gray-2: #4a4f5e;
+	--sl-color-gray-3: #7b8091;
+	--sl-color-gray-4: #a8adb8;
+	--sl-color-gray-5: #e2e5ea;
+	--sl-color-gray-6: #f0f1f4;
+	--sl-color-gray-7: #f5f6f8;
+	--sl-color-black: #ffffff;
+
+	--rba-cat-role: #0091a0;
+	--rba-cat-tech: #6558d9;
+	--rba-cat-shared: #248a3d;
+}
+
+/* ============================================================
+   3. GLOBAL
+   ============================================================ */
+
+html {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	scroll-behavior: smooth;
+}
+
+body {
+	font-weight: 400;
+	letter-spacing: -0.011em;
+}
+
+::selection {
+	background: rgba(0, 184, 217, 0.2);
+	color: inherit;
+}
+
+:root[data-theme='light'] ::selection {
+	background: rgba(0, 145, 160, 0.15);
+}
+
+/* Focus ring — consistent teal */
+:focus-visible {
+	outline: 2px solid var(--sl-color-accent);
+	outline-offset: 2px;
+}
+
+/* ============================================================
+   4. TYPOGRAPHY
+   ============================================================ */
+
+.sl-markdown-content :is(h1, h2, h3, h4, h5, h6) {
+	font-weight: 700;
+	letter-spacing: -0.025em;
+}
+
+.sl-markdown-content h2 {
+	padding-block-start: 1.5rem;
+}
+
+.sl-markdown-content h3,
+.sl-markdown-content h4 {
+	font-weight: 600;
+	letter-spacing: -0.015em;
+}
+
+/* ============================================================
+   5. HEADER — Frosted glass
+   ============================================================ */
+
+header.header {
+	backdrop-filter: blur(20px) saturate(180%);
+	-webkit-backdrop-filter: blur(20px) saturate(180%);
+}
+
+:root:not([data-theme='light']) header.header {
+	background: rgba(18, 20, 26, 0.82) !important;
+	border-bottom-color: rgba(45, 49, 64, 0.6) !important;
+}
+
+:root[data-theme='light'] header.header {
+	background: rgba(255, 255, 255, 0.88) !important;
+	border-bottom-color: rgba(226, 229, 234, 0.8) !important;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+/* Site title — "SKILLS" is all-caps, needs tracking */
+.site-title {
+	font-weight: 700 !important;
+	font-size: 1.05rem !important;
+}
+
+.site-title span {
+	letter-spacing: 0.08em;
+	font-size: 0.85em;
+	opacity: 0.7;
+}
+
+:root[data-theme='light'] .site-title span {
+	opacity: 0.55;
+}
+
+/* Social icons — muted until hover */
+.social-icons a {
+	opacity: 0.5;
+	transition: opacity var(--rba-duration) var(--rba-ease);
+}
+
+.social-icons a:hover {
+	opacity: 1;
+}
+
+/* ============================================================
+   6. SIDEBAR — Category-coded with colored indicators
+   ============================================================ */
+
+/* Active page */
+.sidebar-content ul a[aria-current='page'] {
+	background-color: var(--sl-color-accent-low) !important;
+	color: var(--sl-color-accent-high) !important;
+	border-radius: 6px;
+	font-weight: 600;
+}
+
+:root[data-theme='light'] .sidebar-content ul a[aria-current='page'] {
+	background-color: var(--sl-color-accent-low) !important;
+	color: var(--sl-color-accent-high) !important;
+}
+
+/* Sidebar links — smooth hover */
+.sidebar-content ul a {
+	transition: color var(--rba-duration) var(--rba-ease),
+	            background-color var(--rba-duration) var(--rba-ease);
+	border-radius: 6px;
+}
+
+.sidebar-content ul a:hover:not([aria-current='page']) {
+	background-color: var(--sl-color-gray-5);
+}
+
+:root[data-theme='light'] .sidebar-content ul a:hover:not([aria-current='page']) {
+	background-color: var(--sl-color-gray-6);
+}
+
+/* Group labels */
+.sidebar-content .top-level > li > details > summary .large,
+.sidebar-content .top-level > li > a.large {
+	font-weight: 700;
+	font-size: var(--sl-text-sm) !important;
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+	opacity: 0.55;
+}
+
+/* Top-level group spacing — base */
+.sidebar-content .top-level > li + li {
+	margin-top: 0.5rem;
+	padding-top: 0.5rem;
+}
+
+/* --- Category left-border accent --- */
+
+/* Role groups (tip badge) — teal indicator */
+.sidebar-content .top-level > li:has(.sl-badge.tip) {
+	border-left: 2px solid var(--rba-cat-role);
+	padding-left: 0.75rem;
+	margin-left: -0.75rem;
+}
+
+/* Tech groups (note badge) — purple indicator */
+.sidebar-content .top-level > li:has(.sl-badge.note) {
+	border-left: 2px solid var(--rba-cat-tech);
+	padding-left: 0.75rem;
+	margin-left: -0.75rem;
+}
+
+/* Shared groups (success badge) — green indicator */
+.sidebar-content .top-level > li:has(.sl-badge.success) {
+	border-left: 2px solid var(--rba-cat-shared);
+	padding-left: 0.75rem;
+	margin-left: -0.75rem;
+}
+
+/* --- Category separators --- */
+/* Bigger break before first tech group (note after last tip) */
+.sidebar-content .top-level > li:has(.sl-badge.tip) + li:has(.sl-badge.note) {
+	margin-top: 1.25rem;
+	padding-top: 1.25rem;
+	border-top: 1px solid var(--sl-color-gray-5);
+}
+
+/* Bigger break before shared/governance (after last tech group) */
+.sidebar-content .top-level > li:has(.sl-badge.note) + li:has(.sl-badge.success),
+.sidebar-content .top-level > li:has(.sl-badge.success) + li:not(:has(.sl-badge)) {
+	margin-top: 1.25rem;
+	padding-top: 1.25rem;
+	border-top: 1px solid var(--sl-color-gray-5);
+}
+
+/* Break before first role group (after Getting Started) */
+.sidebar-content .top-level > li:not(:has(.sl-badge)) + li:has(.sl-badge.tip) {
+	margin-top: 1.25rem;
+	padding-top: 1.25rem;
+	border-top: 1px solid var(--sl-color-gray-5);
+}
+
+/* ============================================================
+   7. BADGES — Minimal colored labels
+   ============================================================ */
+
+/* Override badge shape — small, squared, no monospace */
+.sl-badge {
+	border-radius: 3px;
+	font-family: var(--sl-font);
+	font-weight: 600;
+	font-size: 0.55rem;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	padding: 0.15em 0.4em;
+	line-height: 1.4;
+	border-color: transparent !important;
+}
+
+/* Sidebar badges — even more minimal */
+.sidebar-content .sl-badge {
+	font-size: 0.5rem !important;
+	padding: 0.1em 0.35em !important;
+	opacity: 0.8;
+}
+
+/* Badge color overrides — match category colors */
+:root {
+	--sl-badge-tip-bg: rgba(0, 184, 217, 0.15);
+	--sl-badge-tip-border: transparent;
+	--sl-badge-tip-text: var(--rba-cat-role);
+
+	--sl-badge-note-bg: rgba(124, 110, 245, 0.15);
+	--sl-badge-note-border: transparent;
+	--sl-badge-note-text: var(--rba-cat-tech);
+
+	--sl-badge-success-bg: rgba(52, 199, 89, 0.15);
+	--sl-badge-success-border: transparent;
+	--sl-badge-success-text: var(--rba-cat-shared);
+
+	--sl-badge-caution-bg: var(--sl-color-orange-low);
+	--sl-badge-caution-border: transparent;
 }
 
 :root[data-theme='light'] {
-	--sl-color-accent-low: #e0f7fa;
-	--sl-color-accent: #00838f;
-	--sl-color-accent-high: #004d56;
+	--sl-badge-tip-bg: rgba(0, 145, 160, 0.1);
+	--sl-badge-tip-text: var(--rba-cat-role);
+
+	--sl-badge-note-bg: rgba(101, 88, 217, 0.1);
+	--sl-badge-note-text: var(--rba-cat-tech);
+
+	--sl-badge-success-bg: rgba(36, 138, 61, 0.1);
+	--sl-badge-success-text: var(--rba-cat-shared);
+}
+
+.sl-badge.danger {
+	background-color: var(--rba-red) !important;
+}
+
+/* ============================================================
+   8. HERO — Splash page impact
+   ============================================================ */
+
+/* Gradient glow behind hero */
+[data-has-hero] .main-frame {
+	position: relative;
+}
+
+[data-has-hero] .main-frame::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 50vh;
+	background: radial-gradient(
+		ellipse 80% 50% at 50% 0%,
+		rgba(0, 184, 217, 0.06) 0%,
+		transparent 100%
+	);
+	pointer-events: none;
+	z-index: 0;
+}
+
+:root[data-theme='light'] [data-has-hero] .main-frame::before {
+	background: radial-gradient(
+		ellipse 80% 50% at 50% 0%,
+		rgba(0, 145, 160, 0.04) 0%,
+		transparent 100%
+	);
+}
+
+.hero {
+	padding-block: clamp(2.5rem, 8vw, 5rem) !important;
+	position: relative;
+	z-index: 1;
+}
+
+.hero h1 {
+	font-size: clamp(2.25rem, 5.5vw, 3.5rem) !important;
+	font-weight: 700 !important;
+	letter-spacing: -0.035em !important;
+	line-height: 1.08 !important;
+}
+
+.hero .tagline {
+	font-size: clamp(1.05rem, 2.2vw, 1.3rem) !important;
+	font-weight: 400 !important;
+	line-height: 1.55 !important;
+	max-width: 44ch;
+	opacity: 0.75;
+}
+
+/* Hero actions */
+.hero .sl-link-button {
+	border-radius: var(--rba-radius-pill) !important;
+	font-weight: 600 !important;
+	font-size: 0.95rem !important;
+	padding: 0.65rem 1.75rem !important;
+	transition: all var(--rba-duration) var(--rba-ease);
+}
+
+.hero .sl-link-button.primary {
+	background-color: var(--rba-teal) !important;
+	border-color: var(--rba-teal) !important;
+	color: #fff !important;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1),
+	            0 4px 12px -2px rgba(0, 184, 217, 0.25);
+}
+
+:root[data-theme='light'] .hero .sl-link-button.primary {
+	background-color: var(--sl-color-accent) !important;
+	border-color: var(--sl-color-accent) !important;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06),
+	            0 4px 12px -2px rgba(0, 145, 160, 0.2);
+}
+
+.hero .sl-link-button.primary:hover {
+	transform: translateY(-1px);
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1),
+	            0 8px 24px -4px rgba(0, 184, 217, 0.35);
+}
+
+:root[data-theme='light'] .hero .sl-link-button.primary:hover {
+	transform: translateY(-1px);
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06),
+	            0 8px 24px -4px rgba(0, 145, 160, 0.25);
+}
+
+.hero .sl-link-button.minimal {
+	border-radius: var(--rba-radius-pill) !important;
+	opacity: 0.7;
+	transition: opacity var(--rba-duration) var(--rba-ease);
+}
+
+.hero .sl-link-button.minimal:hover {
+	opacity: 1;
+}
+
+/* Hide default hero image */
+.hero > img,
+.hero > .hero-html {
+	display: none !important;
+}
+
+/* ============================================================
+   9. CARDS — Unified teal accent, depth on hover
+   ============================================================ */
+
+/* Override Starlight's rainbow cycling to consistent teal */
+.card {
+	--sl-card-border: var(--sl-color-accent) !important;
+	--sl-card-bg: var(--sl-color-accent-low) !important;
+	border-radius: var(--rba-radius-lg) !important;
+	border-color: var(--sl-color-gray-5) !important;
+	transition: border-color var(--rba-duration) var(--rba-ease),
+	            box-shadow var(--rba-duration) var(--rba-ease),
+	            transform var(--rba-duration) var(--rba-ease);
+}
+
+:root[data-theme='light'] .card {
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.card:hover {
+	border-color: color-mix(in srgb, var(--sl-color-accent) 40%, var(--sl-color-gray-5)) !important;
+	box-shadow: 0 8px 30px -8px rgba(0, 184, 217, 0.12);
+	transform: translateY(-2px);
+}
+
+:root[data-theme='light'] .card:hover {
+	box-shadow: 0 8px 30px -8px rgba(0, 145, 160, 0.1);
+}
+
+/* Card title */
+.card .title {
+	gap: 0.75rem;
+}
+
+/* Card icon — refined */
+.card .icon {
+	border-radius: var(--rba-radius) !important;
+}
+
+/* ============================================================
+   10. LINK CARDS — Arrow animation, border transition
+   ============================================================ */
+
+.sl-link-card {
+	border-radius: var(--rba-radius-lg);
+	transition: border-color var(--rba-duration) var(--rba-ease),
+	            box-shadow var(--rba-duration) var(--rba-ease),
+	            transform var(--rba-duration) var(--rba-ease);
+}
+
+:root[data-theme='light'] .sl-link-card {
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.sl-link-card:hover {
+	border-color: color-mix(in srgb, var(--sl-color-accent) 50%, var(--sl-color-gray-5));
+	box-shadow: 0 8px 24px -6px rgba(0, 184, 217, 0.1);
+	transform: translateY(-1px);
+	background: var(--sl-color-gray-6);
+}
+
+:root[data-theme='light'] .sl-link-card:hover {
+	box-shadow: 0 8px 24px -6px rgba(0, 145, 160, 0.08);
+	background: var(--sl-color-gray-7, var(--sl-color-gray-6));
+}
+
+/* Arrow slides right on hover */
+.sl-link-card .icon {
+	transition: transform var(--rba-duration) var(--rba-ease),
+	            color var(--rba-duration) var(--rba-ease);
+}
+
+.sl-link-card:hover .icon {
+	transform: translateX(3px);
+	color: var(--sl-color-accent);
+}
+
+/* Title color on hover */
+.sl-link-card:hover .title {
+	color: var(--sl-color-accent-high);
+}
+
+:root[data-theme='light'] .sl-link-card:hover .title {
+	color: var(--sl-color-accent);
+}
+
+/* ============================================================
+   11. ANIMATIONS — Entrance sequences & ambient motion
+   ============================================================ */
+
+/* --- Keyframes --- */
+
+@keyframes rba-rise {
+	from { opacity: 0; transform: translateY(20px); }
+	to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes rba-fade {
+	from { opacity: 0; }
+	to   { opacity: 1; }
+}
+
+@keyframes rba-slide-in {
+	from { opacity: 0; transform: translateX(-12px); }
+	to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes rba-breathe {
+	0%, 100% { opacity: 0.6; transform: scale(1); }
+	50%      { opacity: 1;   transform: scale(1.08); }
+}
+
+@keyframes rba-glow-pulse {
+	0%, 100% { box-shadow: 0 1px 2px rgba(0,0,0,0.1), 0 4px 12px -2px rgba(0,184,217,0.25); }
+	50%      { box-shadow: 0 1px 2px rgba(0,0,0,0.1), 0 6px 20px -2px rgba(0,184,217,0.4); }
+}
+
+:root[data-theme='light'] .hero .sl-link-button.primary {
+	animation-name: rba-glow-pulse-light;
+}
+
+@keyframes rba-glow-pulse-light {
+	0%, 100% { box-shadow: 0 1px 2px rgba(0,0,0,0.06), 0 4px 12px -2px rgba(0,145,160,0.2); }
+	50%      { box-shadow: 0 1px 2px rgba(0,0,0,0.06), 0 6px 20px -2px rgba(0,145,160,0.32); }
+}
+
+/* --- Hero entrance sequence --- */
+
+.hero h1 {
+	animation: rba-rise 0.7s var(--rba-ease) 0.1s both;
+}
+
+.hero .tagline {
+	animation: rba-rise 0.7s var(--rba-ease) 0.2s both;
+}
+
+.hero .actions {
+	animation: rba-rise 0.7s var(--rba-ease) 0.35s both;
+}
+
+/* Hero CTA — shimmer on load + shimmer on hover */
+.hero .sl-link-button.primary {
+	animation: rba-rise 0.7s var(--rba-ease) 0.35s both,
+	           rba-glow-pulse 4s ease-in-out 1.5s infinite,
+	           rba-shimmer 0.8s cubic-bezier(0.4, 0, 0.2, 1) 1s 1;
+	animation-fill-mode: backwards, none, none;
+	background-image: linear-gradient(
+		120deg,
+		transparent 40%,
+		rgba(255, 255, 255, 0.18) 48%,
+		rgba(255, 255, 255, 0.25) 50%,
+		rgba(255, 255, 255, 0.18) 52%,
+		transparent 60%
+	);
+	background-size: 300% 100%;
+	background-position: 150% center;
+	transition: background-position 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+	            transform var(--rba-duration) var(--rba-ease),
+	            box-shadow var(--rba-duration) var(--rba-ease);
+}
+
+:root[data-theme='light'] .hero .sl-link-button.primary {
+	background-image: linear-gradient(
+		120deg,
+		transparent 40%,
+		rgba(255, 255, 255, 0.3) 48%,
+		rgba(255, 255, 255, 0.4) 50%,
+		rgba(255, 255, 255, 0.3) 52%,
+		transparent 60%
+	);
+}
+
+.hero .sl-link-button.primary:hover {
+	background-position: -50% center;
+}
+
+@keyframes rba-shimmer {
+	from { background-position: 150% center; }
+	to   { background-position: -50% center; }
+}
+
+/* Hero gradient — ambient breathing */
+[data-has-hero] .main-frame::before {
+	animation: rba-breathe 10s ease-in-out infinite;
+}
+
+/* --- Card grid entrance — ALL card grids stagger --- */
+
+.card-grid > * {
+	animation: rba-rise 0.5s var(--rba-ease) both;
+}
+
+.card-grid > :nth-child(1) { animation-delay: 0.05s; }
+.card-grid > :nth-child(2) { animation-delay: 0.1s; }
+.card-grid > :nth-child(3) { animation-delay: 0.15s; }
+.card-grid > :nth-child(4) { animation-delay: 0.2s; }
+.card-grid > :nth-child(5) { animation-delay: 0.25s; }
+.card-grid > :nth-child(6) { animation-delay: 0.3s; }
+
+/* --- Splash page section stagger --- */
+[data-page-type='splash'] .sl-markdown-content > h2 {
+	animation: rba-rise 0.6s var(--rba-ease) both;
+}
+
+[data-page-type='splash'] .sl-markdown-content > h2:nth-of-type(1) { animation-delay: 0.5s; }
+[data-page-type='splash'] .sl-markdown-content > h2:nth-of-type(2) { animation-delay: 0.8s; }
+[data-page-type='splash'] .sl-markdown-content > h2:nth-of-type(3) { animation-delay: 1.2s; }
+
+[data-page-type='splash'] .sl-markdown-content > p {
+	animation: rba-fade 0.5s var(--rba-ease) 0.55s both;
+}
+
+/* --- View transition persistence ---
+   Keep sidebar and header stable across navigations;
+   only the main content area transitions. */
+
+/* Only persist sidebar on non-splash pages — splash hides it,
+   so morphing it across that boundary causes a scroll offset glitch */
+:not([data-page-type='splash']) .sidebar-content {
+	view-transition-name: sidebar;
+}
+
+header.header {
+	view-transition-name: header;
+}
+
+/* --- Content page entrance --- */
+.main-pane {
+	view-transition-name: main;
+}
+
+/* Crossfade animation for main content during navigation */
+::view-transition-old(main) {
+	animation: 150ms ease-out both fade-out;
+}
+
+::view-transition-new(main) {
+	animation: 200ms ease-out 100ms both fade-in;
+}
+
+@keyframes fade-out {
+	to { opacity: 0; }
+}
+
+@keyframes fade-in {
+	from { opacity: 0; }
+}
+
+/* Sidebar + header: no transition animation (stay in place) */
+::view-transition-old(sidebar),
+::view-transition-new(sidebar),
+::view-transition-old(header),
+::view-transition-new(header) {
+	animation: none;
+}
+
+/* ============================================================
+   12. CONTENT — Links, tables, code, blockquotes
+   ============================================================ */
+
+/* Links */
+.sl-markdown-content a:not(:where(.not-content *)):not(.card a) {
+	text-decoration: none;
+	text-underline-offset: 0.2em;
+	transition: color var(--rba-duration) var(--rba-ease);
+}
+
+.sl-markdown-content a:not(:where(.not-content *)):not(.card a):hover {
+	text-decoration: underline;
+}
+
+/* Tables */
+.sl-markdown-content table {
+	border-radius: var(--rba-radius);
+	overflow: hidden;
+}
+
+.sl-markdown-content table th {
+	font-weight: 600;
+	letter-spacing: -0.01em;
+	font-size: 0.9em;
+	text-transform: uppercase;
+	letter-spacing: 0.02em;
+}
+
+/* Code blocks */
+.sl-markdown-content pre {
+	border-radius: var(--rba-radius-lg) !important;
+	border: 1px solid var(--sl-color-gray-5) !important;
+}
+
+.sl-markdown-content :not(pre) > code {
+	border-radius: 5px;
+	font-size: 0.88em;
+	padding: 0.15em 0.4em;
+}
+
+/* Blockquotes */
+.sl-markdown-content blockquote {
+	border-inline-start-width: 2px;
+	font-style: italic;
+	opacity: 0.85;
+}
+
+/* ============================================================
+   13. ASIDES
+   ============================================================ */
+
+.starlight-aside {
+	border-radius: var(--rba-radius-lg);
+	border-width: 1px;
+	border-left-width: 3px;
+}
+
+.starlight-aside--tip {
+	border-left-color: var(--sl-color-accent);
+}
+
+/* ============================================================
+   14. DETAILS / SUMMARY
+   ============================================================ */
+
+.sl-markdown-content details {
+	border-radius: var(--rba-radius-lg);
+	border: 1px solid var(--sl-color-gray-5);
+	padding: 1rem 1.25rem;
+	margin-block: 1.25rem;
+	transition: border-color var(--rba-duration) var(--rba-ease);
+}
+
+.sl-markdown-content details:hover,
+.sl-markdown-content details:has(> summary:hover) {
+	border-color: color-mix(in srgb, var(--sl-color-accent) 40%, var(--sl-color-gray-5));
+}
+
+.sl-markdown-content details summary {
+	font-weight: 600;
+	cursor: pointer;
+	padding: 0.25rem 0;
+}
+
+.sl-markdown-content details[open] summary {
+	margin-bottom: 1rem;
+	padding-bottom: 1rem;
+	border-bottom: 1px solid var(--sl-color-gray-5);
+}
+
+/* ============================================================
+   15. SEARCH
+   ============================================================ */
+
+dialog[aria-label='Search'] {
+	border-radius: var(--rba-radius-lg) !important;
+	border: 1px solid var(--sl-color-gray-5) !important;
+}
+
+/* ============================================================
+   16. PAGINATION
+   ============================================================ */
+
+.pagination-links a {
+	border-radius: var(--rba-radius-lg) !important;
+	transition: border-color var(--rba-duration) var(--rba-ease),
+	            box-shadow var(--rba-duration) var(--rba-ease);
+}
+
+.pagination-links a:hover {
+	border-color: color-mix(in srgb, var(--sl-color-accent) 50%, var(--sl-color-gray-5)) !important;
+	box-shadow: 0 4px 12px -4px rgba(0, 184, 217, 0.1);
+}
+
+:root[data-theme='light'] .pagination-links a:hover {
+	box-shadow: 0 4px 12px -4px rgba(0, 145, 160, 0.08);
+}
+
+/* ============================================================
+   17. TABLE OF CONTENTS
+   ============================================================ */
+
+starlight-toc a {
+	transition: color var(--rba-duration) var(--rba-ease);
+}
+
+starlight-toc a[aria-current='true'] {
+	color: var(--sl-color-accent) !important;
+	font-weight: 500;
+}
+
+starlight-toc a:hover {
+	color: var(--sl-color-accent-high) !important;
+}
+
+:root[data-theme='light'] starlight-toc a:hover {
+	color: var(--sl-color-accent) !important;
+}
+
+/* ============================================================
+   18. SPLASH PAGE — Section treatment
+   ============================================================ */
+
+/* Wider content on splash */
+[data-page-type='splash'] .sl-markdown-content {
+	max-width: 72rem;
+}
+
+/* Section headings — accent underline */
+[data-page-type='splash'] .sl-markdown-content h2 {
+	position: relative;
+	padding-bottom: 0.85rem;
+	margin-bottom: 0.5rem;
+}
+
+[data-page-type='splash'] .sl-markdown-content h2::after {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 0;
+	height: 2px;
+	background: var(--sl-color-accent);
+	border-radius: 1px;
+	animation: rba-line-draw 0.6s var(--rba-ease) 0.3s both;
+}
+
+@keyframes rba-line-draw {
+	from { width: 0; }
+	to   { width: 40px; }
+}
+
+/* Section intro text */
+[data-page-type='splash'] .sl-markdown-content h2 + p {
+	opacity: 0.65;
+	margin-bottom: 1.5rem;
+}
+
+/* More breathing room between sections */
+[data-page-type='splash'] .sl-markdown-content .card-grid {
+	margin-bottom: 1rem;
+}
+
+/* ============================================================
+   19. FOOTER
+   ============================================================ */
+
+.footer {
+	font-size: 0.8rem;
+	opacity: 0.5;
+}
+
+/* ============================================================
+   20. MOTION — Reduced motion
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		animation-delay: 0ms !important;
+		transition-duration: 0.01ms !important;
+	}
+}
+
+/* ============================================================
+   21. RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 50rem) {
+	.hero h1 {
+		font-size: 1.85rem !important;
+	}
+
+	.hero .tagline {
+		font-size: 1rem !important;
+	}
+
+	[data-page-type='splash'] .sl-markdown-content h2::after {
+		width: 32px;
+	}
+
+	/* Top-level sidebar dividers — remove on mobile for tighter layout */
+	.sidebar-content .top-level > li + li {
+		border-top: none;
+		padding-top: 0;
+	}
 }

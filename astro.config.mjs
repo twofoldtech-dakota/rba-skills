@@ -6,9 +6,14 @@ import starlight from '@astrojs/starlight';
 export default defineConfig({
 	integrations: [
 		starlight({
-			title: 'RBA Skills',
+			title: 'SKILLS',
+			logo: {
+				light: './src/assets/rba-logo-full-color.svg',
+				dark: './src/assets/rba-logo-white.svg',
+				alt: 'RBA',
+			},
 			description:
-				"Claude Intelligence Hub — The unified AI skill framework for RBA Strategy, Design, and Engineering",
+				"DX Intelligence System — Standardized AI expertise for Enterprise Strategy, Design, and Engineering.",
 			social: [
 				{
 					icon: 'linkedin',
@@ -24,6 +29,9 @@ export default defineConfig({
 			lastUpdated: true,
 			editLink: {
 				baseUrl: 'https://github.com/twofoldtech-dakota/rba-skills/edit/main/',
+			},
+			components: {
+				Head: './src/components/starlight/Head.astro',
 			},
 			customCss: [
 				'@fontsource/montserrat/400.css',
@@ -44,6 +52,7 @@ export default defineConfig({
 				{
 					label: 'Strategy',
 					badge: { text: 'Role', variant: 'tip' },
+					collapsed: true,
 					items: [
 						{ label: 'Overview', slug: 'roles/strategy' },
 						{
@@ -71,6 +80,7 @@ export default defineConfig({
 				{
 					label: 'Design',
 					badge: { text: 'Role', variant: 'tip' },
+					collapsed: true,
 					items: [
 						{ label: 'Overview', slug: 'roles/design' },
 						{
@@ -90,6 +100,7 @@ export default defineConfig({
 				{
 					label: 'Engineering',
 					badge: { text: 'Role', variant: 'tip' },
+					collapsed: true,
 					items: [
 						{ label: 'Overview', slug: 'roles/engineering' },
 						{
@@ -136,6 +147,7 @@ export default defineConfig({
 				{
 					label: 'Security & Oversight',
 					badge: { text: 'Role', variant: 'tip' },
+					collapsed: true,
 					items: [
 						{ label: 'Overview', slug: 'roles/security-oversight' },
 						{
@@ -155,6 +167,7 @@ export default defineConfig({
 				{
 					label: 'Sitecore',
 					badge: { text: 'Tech', variant: 'note' },
+					collapsed: true,
 					items: [
 						{ label: 'Overview', slug: 'technologies/sitecore' },
 						{
@@ -182,6 +195,7 @@ export default defineConfig({
 				{
 					label: 'Umbraco',
 					badge: { text: 'Tech', variant: 'note' },
+					collapsed: true,
 					items: [
 						{ label: 'Overview', slug: 'technologies/umbraco' },
 						{
@@ -201,6 +215,7 @@ export default defineConfig({
 				{
 					label: 'Optimizely',
 					badge: { text: 'Tech', variant: 'note' },
+					collapsed: true,
 					items: [
 						{ label: 'Overview', slug: 'technologies/optimizely' },
 						{
@@ -224,6 +239,7 @@ export default defineConfig({
 				{
 					label: 'Microsoft Azure',
 					badge: { text: 'Tech', variant: 'note' },
+					collapsed: true,
 					items: [
 						{ label: 'Overview', slug: 'technologies/azure' },
 						{
@@ -239,10 +255,12 @@ export default defineConfig({
 				{
 					label: 'Cross-Role Skills',
 					badge: { text: 'Shared', variant: 'success' },
+					collapsed: true,
 					autogenerate: { directory: 'cross-role' },
 				},
 				{
 					label: 'Governance',
+					collapsed: true,
 					items: [
 						{ label: 'Contributing', slug: 'governance/contributing' },
 						{ label: 'Skill Standards', slug: 'governance/skill-standards' },

@@ -1,9 +1,9 @@
 ---
 title: Overview
-description: What is the RBA Intelligence Hub and how to navigate it
+description: What is DX Intelligence System and how to navigate it
 ---
 
-The RBA Intelligence Hub is a library of AI-powered skills built for RBA's teams. Each skill is a proven workflow encoded as a prompt — ready to use in ChatGPT, Claude, Gemini, or any AI assistant.
+DX Intelligence System is a library of AI-powered skills built for RBA's teams. Each skill is a proven workflow encoded as a prompt — ready to use in ChatGPT, Claude, Gemini, or any AI assistant.
 
 ## Who Is This For?
 

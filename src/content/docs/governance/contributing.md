@@ -1,6 +1,6 @@
 ---
 title: Contributing
-description: How to propose, create, and submit new skills to the RBA Intelligence Hub
+description: How to propose, create, and submit new skills to DX Intelligence System
 ---
 
 The Intelligence Hub grows through contributions from every team at RBA. Whether you're a project manager with a prompt that saves hours or an engineer with a scaffolding workflow, your skills belong here.

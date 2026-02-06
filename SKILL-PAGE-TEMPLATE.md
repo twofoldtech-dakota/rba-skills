@@ -1,6 +1,6 @@
 # Skill Page Template
 
-Use this template when creating new skill pages for the RBA Intelligence Hub.
+Use this template when creating new skill pages for DX Intelligence System.
 
 **File location:** `src/content/docs/roles/<pillar>/<discipline>/` or `src/content/docs/technologies/<platform>/<area>/`
 **File format:** `.md` (Markdown — no MDX needed for standard skill pages)
