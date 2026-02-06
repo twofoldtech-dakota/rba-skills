@@ -220,50 +220,27 @@ header.header {
 	padding-top: 0.5rem;
 }
 
-/* --- Category left-border accent --- */
-
-/* Role groups (tip badge) — teal indicator */
-.sidebar-content .top-level > li:has(.sl-badge.tip) {
-	border-left: 2px solid var(--rba-cat-role);
-	padding-left: 0.75rem;
-	margin-left: -0.75rem;
+/* Leaf skill links — breathing room between items */
+.sidebar-content ul ul li + li {
+	margin-top: 0.25rem;
+	padding-top: 0.25rem;
+	border-top: 1px solid color-mix(in srgb, var(--sl-color-gray-5) 50%, transparent);
 }
 
-/* Tech groups (note badge) — purple indicator */
+/* --- Section separators --- */
+/* Separator before Browse by Discipline (7th item) and Governance (9th item) */
+.sidebar-content .top-level > li:nth-child(7),
+.sidebar-content .top-level > li:nth-child(9) {
+	margin-top: 1.25rem;
+	padding-top: 1.25rem;
+	border-top: 1px solid var(--sl-color-gray-5);
+}
+
+/* Tech badge accent on Browse by Platform */
 .sidebar-content .top-level > li:has(.sl-badge.note) {
 	border-left: 2px solid var(--rba-cat-tech);
 	padding-left: 0.75rem;
 	margin-left: -0.75rem;
-}
-
-/* Shared groups (success badge) — green indicator */
-.sidebar-content .top-level > li:has(.sl-badge.success) {
-	border-left: 2px solid var(--rba-cat-shared);
-	padding-left: 0.75rem;
-	margin-left: -0.75rem;
-}
-
-/* --- Category separators --- */
-/* Bigger break before first tech group (note after last tip) */
-.sidebar-content .top-level > li:has(.sl-badge.tip) + li:has(.sl-badge.note) {
-	margin-top: 1.25rem;
-	padding-top: 1.25rem;
-	border-top: 1px solid var(--sl-color-gray-5);
-}
-
-/* Bigger break before shared/governance (after last tech group) */
-.sidebar-content .top-level > li:has(.sl-badge.note) + li:has(.sl-badge.success),
-.sidebar-content .top-level > li:has(.sl-badge.success) + li:not(:has(.sl-badge)) {
-	margin-top: 1.25rem;
-	padding-top: 1.25rem;
-	border-top: 1px solid var(--sl-color-gray-5);
-}
-
-/* Break before first role group (after Getting Started) */
-.sidebar-content .top-level > li:not(:has(.sl-badge)) + li:has(.sl-badge.tip) {
-	margin-top: 1.25rem;
-	padding-top: 1.25rem;
-	border-top: 1px solid var(--sl-color-gray-5);
 }
 
 /* ============================================================

@@ -50,213 +50,76 @@ export default defineConfig({
 					],
 				},
 				{
-					label: 'Strategy',
-					badge: { text: 'Role', variant: 'tip' },
+					label: 'Plan',
 					collapsed: true,
 					items: [
-						{ label: 'Overview', slug: 'roles/strategy' },
-						{
-							label: 'Project Management',
-							autogenerate: { directory: 'roles/strategy/project-management' },
-						},
-						{
-							label: 'Business Analysis',
-							autogenerate: { directory: 'roles/strategy/business-analysis' },
-						},
-						{
-							label: 'Digital Strategy',
-							autogenerate: { directory: 'roles/strategy/digital-strategy' },
-						},
-						{
-							label: 'Content Strategy',
-							autogenerate: { directory: 'roles/strategy/content-strategy' },
-						},
-						{
-							label: 'SEO & GEO',
-							autogenerate: { directory: 'roles/strategy/seo-geo' },
-						},
+						{ label: 'Discovery & Requirements', autogenerate: { directory: 'plan/discovery-and-requirements' } },
+						{ label: 'Proposals & Scoping', autogenerate: { directory: 'plan/proposals-and-scoping' } },
+						{ label: 'Project Kickoff', autogenerate: { directory: 'plan/project-kickoff' } },
+						{ label: 'Sprint Ceremonies', autogenerate: { directory: 'plan/sprint-ceremonies' } },
+						{ label: 'Change & Transition', autogenerate: { directory: 'plan/change-and-transition' } },
 					],
 				},
 				{
-					label: 'Design',
-					badge: { text: 'Role', variant: 'tip' },
+					label: 'Build',
 					collapsed: true,
 					items: [
-						{ label: 'Overview', slug: 'roles/design' },
-						{
-							label: 'UX Design',
-							autogenerate: { directory: 'roles/design/ux-design' },
-						},
-						{
-							label: 'UI Design',
-							autogenerate: { directory: 'roles/design/ui-design' },
-						},
-						{
-							label: 'Accessibility',
-							autogenerate: { directory: 'roles/design/accessibility' },
-						},
+						{ label: 'Content Modeling', autogenerate: { directory: 'build/content-modeling' } },
+						{ label: 'Component Development', autogenerate: { directory: 'build/component-development' } },
+						{ label: 'Platform Configuration', autogenerate: { directory: 'build/platform-configuration' } },
+						{ label: 'Architecture & Integration', autogenerate: { directory: 'build/architecture-and-integration' } },
+						{ label: 'Design Systems', autogenerate: { directory: 'build/design-systems' } },
 					],
 				},
 				{
-					label: 'Engineering',
-					badge: { text: 'Role', variant: 'tip' },
+					label: 'Test & Review',
 					collapsed: true,
 					items: [
-						{ label: 'Overview', slug: 'roles/engineering' },
-						{
-							label: 'Architecture',
-							autogenerate: { directory: 'roles/engineering/architecture' },
-						},
-						{
-							label: 'Software Engineering',
-							items: [
-								{
-									label: 'Front-End',
-									autogenerate: {
-										directory: 'roles/engineering/software-engineering/front-end',
-									},
-								},
-								{
-									label: 'Back-End',
-									autogenerate: {
-										directory: 'roles/engineering/software-engineering/back-end',
-									},
-								},
-								{
-									label: 'Full-Stack',
-									autogenerate: {
-										directory: 'roles/engineering/software-engineering/full-stack',
-									},
-								},
-							],
-						},
-						{
-							label: 'Testing & QA',
-							autogenerate: { directory: 'roles/engineering/testing-qa' },
-						},
-						{
-							label: 'DevOps',
-							autogenerate: { directory: 'roles/engineering/devops' },
-						},
-						{
-							label: 'Database',
-							autogenerate: { directory: 'roles/engineering/database' },
-						},
+						{ label: 'Code Review', autogenerate: { directory: 'test-and-review/code-review' } },
+						{ label: 'Testing', autogenerate: { directory: 'test-and-review/testing' } },
+						{ label: 'Auditing', autogenerate: { directory: 'test-and-review/auditing' } },
+						{ label: 'Compliance & Security', autogenerate: { directory: 'test-and-review/compliance-and-security' } },
 					],
 				},
 				{
-					label: 'Security & Oversight',
-					badge: { text: 'Role', variant: 'tip' },
+					label: 'Operate',
 					collapsed: true,
 					items: [
-						{ label: 'Overview', slug: 'roles/security-oversight' },
-						{
-							label: 'Security',
-							autogenerate: { directory: 'roles/security-oversight/security' },
-						},
-						{
-							label: 'Compliance',
-							autogenerate: { directory: 'roles/security-oversight/compliance' },
-						},
-						{
-							label: 'Performance',
-							autogenerate: { directory: 'roles/security-oversight/performance' },
-						},
+						{ label: 'Deployment & Go-Live', autogenerate: { directory: 'operate/deployment-and-go-live' } },
+						{ label: 'Performance', autogenerate: { directory: 'operate/performance' } },
+						{ label: 'Troubleshooting', autogenerate: { directory: 'operate/troubleshooting' } },
+						{ label: 'Knowledge Transfer', autogenerate: { directory: 'operate/knowledge-transfer' } },
 					],
 				},
 				{
-					label: 'Sitecore',
+					label: 'Communicate',
+					collapsed: true,
+					items: [
+						{ label: 'Client-Facing', autogenerate: { directory: 'communicate/client-facing' } },
+						{ label: 'Internal', autogenerate: { directory: 'communicate/internal' } },
+						{ label: 'Enablement', autogenerate: { directory: 'communicate/enablement' } },
+					],
+				},
+				{
+					label: 'Browse by Discipline',
+					collapsed: true,
+					items: [
+						{ label: 'Strategy', slug: 'disciplines/strategy' },
+						{ label: 'Design', slug: 'disciplines/design' },
+						{ label: 'Engineering', slug: 'disciplines/engineering' },
+						{ label: 'Security & Oversight', slug: 'disciplines/security' },
+					],
+				},
+				{
+					label: 'Browse by Platform',
 					badge: { text: 'Tech', variant: 'note' },
 					collapsed: true,
 					items: [
-						{ label: 'Overview', slug: 'technologies/sitecore' },
-						{
-							label: 'XM Cloud',
-							autogenerate: { directory: 'technologies/sitecore/xm-cloud' },
-						},
-						{
-							label: 'XP (Experience Platform)',
-							autogenerate: { directory: 'technologies/sitecore/xp' },
-						},
-						{
-							label: 'Headless & JSS',
-							autogenerate: { directory: 'technologies/sitecore/headless-jss' },
-						},
-						{
-							label: 'Search',
-							autogenerate: { directory: 'technologies/sitecore/search' },
-						},
-						{
-							label: 'Commerce & OrderCloud',
-							autogenerate: { directory: 'technologies/sitecore/commerce' },
-						},
+						{ label: 'Sitecore', slug: 'platforms/sitecore' },
+						{ label: 'Umbraco', slug: 'platforms/umbraco' },
+						{ label: 'Optimizely', slug: 'platforms/optimizely' },
+						{ label: 'Microsoft Azure', slug: 'platforms/azure' },
 					],
-				},
-				{
-					label: 'Umbraco',
-					badge: { text: 'Tech', variant: 'note' },
-					collapsed: true,
-					items: [
-						{ label: 'Overview', slug: 'technologies/umbraco' },
-						{
-							label: 'Umbraco v13+',
-							autogenerate: { directory: 'technologies/umbraco/v13-plus' },
-						},
-						{
-							label: 'Umbraco v7-v8 (Legacy)',
-							autogenerate: { directory: 'technologies/umbraco/v7-v8-legacy' },
-						},
-						{
-							label: 'Heartcore',
-							autogenerate: { directory: 'technologies/umbraco/heartcore' },
-						},
-					],
-				},
-				{
-					label: 'Optimizely',
-					badge: { text: 'Tech', variant: 'note' },
-					collapsed: true,
-					items: [
-						{ label: 'Overview', slug: 'technologies/optimizely' },
-						{
-							label: 'Optimizely CMS',
-							autogenerate: { directory: 'technologies/optimizely/optimizely-cms' },
-						},
-						{
-							label: 'Episerver (Legacy)',
-							autogenerate: { directory: 'technologies/optimizely/episerver-legacy' },
-						},
-						{
-							label: 'CMP',
-							autogenerate: { directory: 'technologies/optimizely/cmp' },
-						},
-						{
-							label: 'Commerce',
-							autogenerate: { directory: 'technologies/optimizely/commerce' },
-						},
-					],
-				},
-				{
-					label: 'Microsoft Azure',
-					badge: { text: 'Tech', variant: 'note' },
-					collapsed: true,
-					items: [
-						{ label: 'Overview', slug: 'technologies/azure' },
-						{
-							label: 'Cloud Infrastructure',
-							autogenerate: { directory: 'technologies/azure/cloud-infrastructure' },
-						},
-						{
-							label: 'AI Services',
-							autogenerate: { directory: 'technologies/azure/ai-services' },
-						},
-					],
-				},
-				{
-					label: 'Cross-Role Skills',
-					badge: { text: 'Shared', variant: 'success' },
-					collapsed: true,
-					autogenerate: { directory: 'cross-role' },
 				},
 				{
 					label: 'Governance',

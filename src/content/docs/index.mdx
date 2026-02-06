@@ -9,34 +9,46 @@ hero:
       link: /getting-started/overview/
       icon: right-arrow
       variant: primary
-    - text: Browse by Role
-      link: '#browse-by-role'
+    - text: Browse by Phase
+      link: '#browse-by-phase'
       icon: down-caret
       variant: minimal
 ---
 
 import { Card, CardGrid, LinkCard } from '@astrojs/starlight/components';
 
-## Browse by Role
+## Browse by Phase
 
-Find skills tailored to your discipline within RBA's three pillars.
+Find skills organized around the project lifecycle — from discovery to operations.
 
 <CardGrid>
-  <LinkCard title="Strategy" description="Project management, business analysis, digital strategy, content strategy, and SEO/GEO" href="/roles/strategy/" />
-  <LinkCard title="Design" description="UX design, UI design, and accessibility — WCAG compliance and inclusive patterns" href="/roles/design/" />
-  <LinkCard title="Engineering" description="Architecture, front-end, back-end, full-stack, DevOps, testing, and database" href="/roles/engineering/" />
-  <LinkCard title="Security & Oversight" description="Security reviews, compliance checks, and performance audits" href="/roles/security-oversight/" />
+  <LinkCard title="Plan" description="Discovery, requirements, proposals, kickoff, sprint ceremonies, and change management" href="/plan/discovery-and-requirements/generate-discovery-workshop-agenda/" />
+  <LinkCard title="Build" description="Content modeling, component development, platform configuration, architecture, and design systems" href="/build/component-development/scaffold-sitecore-jss-component/" />
+  <LinkCard title="Test & Review" description="Code review, testing, auditing, compliance, and security checks" href="/test-and-review/auditing/audit-wcag-compliance/" />
+  <LinkCard title="Operate" description="Deployment, go-live, performance monitoring, troubleshooting, and knowledge transfer" href="/operate/deployment-and-go-live/generate-go-live-checklist/" />
+  <LinkCard title="Communicate" description="Client communications, internal docs, tickets, and enablement materials" href="/communicate/client-facing/draft-client-communication/" />
 </CardGrid>
 
-## Browse by Technology
+## Browse by Discipline
+
+Find skills tailored to your role within RBA's three pillars.
+
+<CardGrid>
+  <LinkCard title="Strategy" description="Project management, business analysis, digital strategy, content strategy, and SEO/GEO" href="/disciplines/strategy/" />
+  <LinkCard title="Design" description="UX design, UI design, and accessibility — WCAG compliance and inclusive patterns" href="/disciplines/design/" />
+  <LinkCard title="Engineering" description="Architecture, front-end, back-end, full-stack, DevOps, testing, and database" href="/disciplines/engineering/" />
+  <LinkCard title="Security & Oversight" description="Security reviews, compliance checks, and performance audits" href="/disciplines/security/" />
+</CardGrid>
+
+## Browse by Platform
 
 Find skills for the platforms RBA delivers on every day.
 
 <CardGrid>
-  <LinkCard title="Sitecore" description="XM Cloud, XP, Headless/JSS, Search, and Commerce — Platinum Partner" href="/technologies/sitecore/" />
-  <LinkCard title="Umbraco" description="v13+, legacy v7/v8, and Heartcore — Gold Partner" href="/technologies/umbraco/" />
-  <LinkCard title="Optimizely" description="CMS, Episerver legacy, CMP, and Commerce — Partner" href="/technologies/optimizely/" />
-  <LinkCard title="Microsoft Azure" description="Cloud infrastructure, DevOps, and AI services" href="/technologies/azure/" />
+  <LinkCard title="Sitecore" description="XM Cloud, XP, Headless/JSS, Search, and Commerce — Platinum Partner" href="/platforms/sitecore/" />
+  <LinkCard title="Umbraco" description="v13+, legacy v7/v8, and Heartcore — Gold Partner" href="/platforms/umbraco/" />
+  <LinkCard title="Optimizely" description="CMS, Episerver legacy, CMP, and Commerce — Partner" href="/platforms/optimizely/" />
+  <LinkCard title="Microsoft Azure" description="Cloud infrastructure, DevOps, and AI services" href="/platforms/azure/" />
 </CardGrid>
 
 ## What Are RBA Skills?
