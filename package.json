@@ -12,6 +12,7 @@
   "dependencies": {
     "@astrojs/starlight": "^0.37.6",
     "@fontsource/montserrat": "^5.2.8",
+    "@vercel/analytics": "^1.6.1",
     "astro": "^5.6.1",
     "sharp": "^0.34.2"
   },
